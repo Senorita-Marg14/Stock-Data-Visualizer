@@ -17,7 +17,32 @@ API_KEY = os.getenv("API_KEY")
 
 #USER INPUTS
 #ask the user to enter the stock symbol for the company they want data for
+    #only letters, has to be lest than 7
+def get_stock_symbol():
+    while True:
+        user_input = input("\nEnter the stock symbol you are looking for: ").strip()
+        user_input_caps = user_input.upper()
+
+        if len(user_input_caps) >= 7:
+            print("Stock symbols must be 7 letters or less.")
+        
+
 #ask the user for the chart type they would like
+def get_chart_type():
+    while True:
+        print("Chart Types\n-----------------")
+        print("1. Bar")
+        print("2. Line")
+        user_input = input("\nEnter the chart type you want (1,2): ")
+
+        if user_input == "1":
+            return None
+            #return bar chart with pygal
+        elif user_input == "2":
+            return None
+            #return line chart with pygal
+        else:
+            print("\nPlease enter either 1 or 2.\n")
 #ask the user for the time series function they want the api to use
 def get_time_series():
     while True:
@@ -30,7 +55,7 @@ def get_time_series():
 
         user_input = input("Enter a choice 1-4: ")
         if user_input not in [1,2,3,4]:
-            print("Please enter 1,2,3, or 4.")
+            print("\nPlease enter 1,2,3, or 4.")
         else:
             return user_input
 #ask the user for the beginning date in YYYY-MM-DD format
@@ -70,8 +95,8 @@ def main():
     print("Stock Date Visualizer\n------------------------")
 
     #test for now 
-    get_start_date()
-    
+    #get_start_date()
+    get_chart_type()
 
 
 main()
