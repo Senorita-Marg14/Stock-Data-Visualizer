@@ -19,12 +19,24 @@ API_KEY = os.getenv("API_KEY")
 #ask the user to enter the stock symbol for the company they want data for
     #only letters, has to be lest than 7
 def get_stock_symbol():
+    check_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     while True:
         user_input = input("\nEnter the stock symbol you are looking for: ").strip()
         user_input_caps = user_input.upper()
 
-        if len(user_input_caps) >= 7:
-            print("Stock symbols must be 7 letters or less.")
+        is_letters = True
+        for i in user_input_caps:
+            if i not in check_letters:
+                all_letters = False
+
+        if len(user_input_caps) >= 7 or len(user_input_caps) == 0:
+            print("Stock symbols must be between 0-7 letters long.")
+        elif all_letters == False:
+            print("Stock symbols can only contain letters.")
+        else:
+            return user_input_caps
+        
+        
         
 
 #ask the user for the chart type they would like
@@ -43,6 +55,8 @@ def get_chart_type():
             #return line chart with pygal
         else:
             print("\nPlease enter either 1 or 2.\n")
+
+
 #ask the user for the time series function they want the api to use
 def get_time_series():
     while True:
@@ -58,9 +72,10 @@ def get_time_series():
             print("\nPlease enter 1,2,3, or 4.")
         else:
             return user_input
+
+        
 #ask the user for the beginning date in YYYY-MM-DD format
 #make sure the date is in the right format
-
 def get_date_validate(user_input):
     while True:
         user_date_input = input(user_input).strip()
@@ -84,7 +99,10 @@ def get_end_date(start_date):
         else:
             print("The end date cannot be before the start date.")
 
-    #the end date should not be before the begin date
+
+
+
+
 #Generate a graph and open the user's default browser
 
 
@@ -94,9 +112,10 @@ def get_end_date(start_date):
 def main():
     print("Stock Date Visualizer\n------------------------")
 
-    #test for now 
+    #TEST STUFF FOR NOW
     #get_start_date()
-    get_chart_type()
+    #get_chart_type()
+    #get_stock_symbol()
 
 
 main()
