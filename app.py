@@ -15,6 +15,7 @@ API_KEY = os.getenv("API_KEY")
 
 
 
+
 #USER INPUTS
 #ask the user to enter the stock symbol for the company they want data for
     #only letters, has to be lest than 7
@@ -112,10 +113,8 @@ def get_end_date(start_date):
 def main():
     print("Stock Date Visualizer\n------------------------")
 
-    #TEST STUFF FOR NOW
-    #get_start_date()
-    #get_chart_type()
-    #get_stock_symbol()
+    
+        
 
 
 main()
