@@ -155,11 +155,11 @@ def sort_api_data(time_series_choice, start_date, end_date):
 #Generate a graph and open the user's default browser
 
 def draw_graph(dates, stock_data, symbol_choice, start_date, end_date, chart_type):
-
+    chart_colors = Style(colors=("#FF3B1A", "#0C83F2", "#1AFF6A", "#EDDF1F"))
     if chart_type == "bar":
-        chart_object = pygal.Bar(x_label_rotation=45, height=400, style=BlueStyle)
+        chart_object = pygal.Bar(x_label_rotation=45, height=400, style=chart_colors)
     else:
-        chart_object = pygal.Line(x_label_rotation=45, height=400, style=BlueStyle)
+        chart_object = pygal.Line(x_label_rotation=45, height=400, style=chart_colors)
 
     chart_object.title = f"Stock Data for {symbol_choice}: {start_date} to {end_date}"
     chart_object.x_labels = dates
